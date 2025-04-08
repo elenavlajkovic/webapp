@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija</title>
+</head>
+<body>
+
+    <header>
+        <h2>Prijava admin</h2>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <label>Korisničko ime:</label>
+            <input type="text" [(ngModel)]="admin.kor_ime">
+
+            <label>Lozinka:</label>
+            <input type="password" [(ngModel)]="admin.lozinka">
+
+            <button (click)="loginAdmin()">Prijavi se</button>
+
+            <div class="links">
+                
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+    </footer>
+
+</body>
+</html>
+
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijava</title>
+</head>
+<body>
+
+    <header>
+        <h2>Prijava</h2>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <label for="username">Korisničko ime:</label>
+            <input id="username" type="text" [(ngModel)]="kor_ime" placeholder="Unesite korisničko ime">
+
+            <label for="password">Lozinka:</label>
+            <input id="password" type="password" [(ngModel)]="lozinka" placeholder="Unesite lozinku">
+
+            <button (click)="login()">Prijavi se</button>
+
+            <div class="links">
+            </div>
+
+            <div *ngIf="poruka" class="alert alert-danger">
+                {{ poruka }}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+    </footer>
+
+</body>
+</html>

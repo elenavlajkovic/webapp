@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predmeti po semestrima</title>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <img src="/assets/images.png" alt="ETF Logo" class="logo">
+            <div class="user-info">
+                <div class="user-details">
+                    <img src="/assets/user.png" alt="User Icon" class="user-icon"> 
+                    <span>{{ kor_ime }}</span>
+                </div>
+                <a class="logout-link" (click)="logout()">Odjavi se</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="sidebar">
+            <a [routerLink]="['/professor']" routerLinkActive="active-link">Početna</a>
+            <a [routerLink]="['/professorExams']" routerLinkActive="active-link">Zakazivanje ispita</a>
+            <a [routerLink]="['/professorInfo']" routerLinkActive="active-link">Obaveštenja</a>
+            <a [routerLink]="['/professorGrades']" routerLinkActive="active-link">Upisivanje ocena</a>
+            <a [routerLink]="['/professorTimeTable']" routerLinkActive="active-link">Raspored časova</a>
+            <a [routerLink]="['/professorPassword']" routerLinkActive="active-link">Promena lozinke</a>
+        </nav>
+
+        <main>
+            <h3>Otkazani ispiti</h3>
+            <div *ngFor="let obavestenje of obavestenja" 
+            [ngClass]="{
+              'procitano': obavestenjaProcitana[generisiKljuc(obavestenje)],
+              'neprocitano': !obavestenjaProcitana[generisiKljuc(obavestenje)]
+            }"
+            style="position: relative; padding-bottom: 50px;">
+         <div>
+           <p><strong>Predmet:</strong> {{ obavestenje.predmet }}</p>
+           <p><strong>Datum:</strong> {{ obavestenje.datum | date }}</p>
+           <p><strong>Vreme početka:</strong> {{ obavestenje.vreme_pocetka }}</p>
+           <p><strong>Vreme kraja:</strong> {{ obavestenje.vreme_kraja }}</p>
+           <p><strong>Sale:</strong> {{ obavestenje.sale.join(', ') }}</p>
+           <p><strong>Godine:</strong> {{ obavestenje.godine.join(', ') }}</p>
+           <button class="btn btn-success" (click)="procitano(obavestenje)" 
+                   style="position: absolute; bottom: 10px; right: 10px; padding: 5px 10px; font-size: 14px; z-index: 10; width: 3%;">
+             <i class="fas fa-check"></i>
+           </button>
+         </div>
+       </div>
+            
+        </main>
+    </div>
+
+    <footer>
+        © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+    </footer>
+
+</body>
+</html>

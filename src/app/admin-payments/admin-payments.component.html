@@ -1,0 +1,62 @@
+<p><!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registracija</title>
+    </head>
+    <body>
+    
+        <header>
+            <div class="nav-links">
+                <a [routerLink]="['/adminMain']">Početna</a>
+                <a [routerLink]="['/registrationProfessor']">Registracija profesora</a>
+                <a [routerLink]="['/registration']">Registracija studenta</a>
+                <a [routerLink]="['/adminSubjects']">Dodavanje predmeta</a>
+                <a [routerLink]="['/adminExams']">Definisanje ispitnih rokova</a>
+                <a [routerLink]="['/adminProfView']">Pregled profesora</a>
+                <a [routerLink]="['/adminStudView']">Pregled studenata</a>
+                <a [routerLink]="['/adminTestView']">Pregled zakazanih ispita</a>
+                <a [routerLink]="['/adminPayments']">Školarine i uplate</a>
+                <a class="logout-link" (click)="logout()">Odjavi se</a>
+            </div>
+        </header>
+    
+        <main>
+            <div class="reg">
+                <h2 class="form-title">Unesite podatke o uplati:</h2>
+                <label for="kor_ime">Korisničko ime studenta:</label><br>
+                <input type="text" id="kor_ime" [(ngModel)]="kor_ime" name="kor_ime" required><br><br>
+            
+                <label for="iznos">Iznos:</label><br>
+                <input type="number" id="iznos" [(ngModel)]="iznos" name="iznos" min="0" step="0.01" required><br><br>
+            
+                <label for="datum_uplate">Datum uplate:</label><br>
+                <input type="date" id="datum_uplate" [(ngModel)]="datum_uplate" name="datum_uplate" required><br><br>
+            
+                <button (click)="podaciOUplati()">Sačuvaj</button>
+            
+                <div *ngIf="poruka" class="alert alert-success" style="display: block; text-align: center">
+                    {{ poruka }}
+                </div>
+
+                <div *ngIf="poruka2" class="alert alert-danger" style="display: block; text-align: center">
+                    {{ poruka2 }}
+                </div>
+            </div>
+            
+        </main>
+    
+        <footer>
+            © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+        </footer>
+    
+    </body>
+    </html>
+
+    
+      
+    
+    
+    
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija</title>
+</head>
+<body>
+
+    <header>
+        <div class="nav-links">
+            <a [routerLink]="['/adminMain']">Početna</a>
+            <a [routerLink]="['/registrationProfessor']">Registracija profesora</a>
+            <a [routerLink]="['/registration']">Registracija studenta</a>
+            <a [routerLink]="['/adminSubjects']">Dodavanje predmeta</a>
+            <a [routerLink]="['/adminExams']">Definisanje ispitnih rokova</a>
+            <a [routerLink]="['/adminProfView']">Pregled profesora</a>
+            <a [routerLink]="['/adminStudView']">Pregled studenata</a>
+            <a [routerLink]="['/adminTestView']">Pregled zakazanih ispita</a>
+            <a [routerLink]="['/adminPayments']">Školarine i uplate</a>
+            <a class="logout-link" (click)="logout()">Odjavi se</a>
+        </div>
+    </header>
+
+    <main>
+      <div class="reg">
+        <h2 class="form-title">Registracija studenta</h2>
+    
+        <label>Korisničko ime:</label>
+        <input type="text" [(ngModel)]="student.kor_ime" name="kor_ime" required>
+        <br>
+    
+        <label>Lozinka:</label>
+        <input type="password" [(ngModel)]="student.lozinka" name="lozinka" required>
+        <br>
+    
+        <label>Ime:</label>
+        <input type="text" [(ngModel)]="student.ime" name="ime" required>
+        <br>
+    
+        <label>Prezime:</label>
+        <input type="text" [(ngModel)]="student.prezime" name="prezime" required>
+        <br>
+    
+        <div class="pol-container">
+          <label>Pol:</label>
+          <input type="radio" [(ngModel)]="student.pol" value="muski" name="pol" required> M
+          <input type="radio" [(ngModel)]="student.pol" value="zenski" name="pol" required> Ž
+        </div>
+        <br>
+    
+        <label>Email adresa:</label>
+        <input type="email" [(ngModel)]="student.mejl" name="mejl" required>
+        <br>
+  
+        <label>Datum rođenja:</label>
+        <input type="date" [(ngModel)]="student.datum_rodjenja" name="datum_rodjenja" required>
+        <br>
+  
+        <label>Godina studija:</label>
+        <select [(ngModel)]="student.godina" name="godina" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <br>
+    
+        <label>Godina upisa:</label>
+        <input type="number" [(ngModel)]="student.godina_upisa" name="godina_upisa" min = "2000" value = "2000" required>
+        <br>
+    
+        <label>Indeks:</label>
+        <input type="number" [(ngModel)]="student.indeks" name="indeks" required>
+        <br>
+    
+        <button (click)="registruj()">Registruj studenta</button>
+    
+        <div *ngIf="poruka" class="alert alert-danger" style="display: block; text-align: center; color: red;">
+          {{ poruka }}
+        </div>
+  
+        <div *ngIf="uspesno" class="alert alert-success"style="display: block; text-align: center">
+          {{ uspesno }}
+        </div>
+      </div>
+    </main>
+
+    <footer>
+        © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+    </footer>
+
+</body>
+</html>
+  

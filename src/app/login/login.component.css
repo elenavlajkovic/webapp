@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e0e0e0;
+    color: #2c2c2c;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #8b0000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+footer {
+    background-color: #8b0000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 180px);
+    padding: 20px;
+}
+
+.form-container {
+    background-color: #f2f2f2;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: #ffffff;
+}
+
+input[type="password"]:focus {
+    outline: none;
+    border-color: #8b0000;
+    box-shadow: 0 0 5px rgba(139, 0, 0, 0.5);
+}
+
+.alert {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #8b0000;
+    box-shadow: 0 0 5px rgba(139, 0, 0, 0.5);
+}
+
+input::placeholder {
+    color: #888888;
+}
+
+button {
+    background-color: #8b0000;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #a60000;
+}
+
+.porukaGreske {
+    color: #ff4d4d;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    header {
+        font-size: 24px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    footer {
+        padding: 10px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predmeti po semestrima</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-content">
+      <img src="/assets/images.png" alt="ETF Logo" class="logo">
+      <div class="user-info">
+        <div class="user-details">
+          <img src="/assets/user.png" alt="User Icon" class="user-icon"> 
+          <span>{{ kor_ime }}</span>
+        </div>
+        <a class="logout-link" (click)="logout()">Odjavi se</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav class="sidebar">
+      <a [routerLink]="['/student']" routerLinkActive="active-link">Početna</a>
+      <a [routerLink]="['/studentChooseSubjects']" routerLinkActive="active-link">Biranje predmeta</a>
+      <a [routerLink]="['/studentExamReg']" routerLinkActive="active-link">Prijava ispita</a>
+      <a [routerLink]="['/studentGrades']" routerLinkActive="active-link">Ispiti</a>
+      <a [routerLink]="['/studentTimeTable']" routerLinkActive="active-link">Raspored časova</a>
+      <a [routerLink]="['/studentPayments']" routerLinkActive="active-link">Školarine i uplate</a>
+      <a [routerLink]="['/studentPassword']" routerLinkActive="active-link">Promena lozinke</a>
+    </nav>
+
+    <main>
+      <div *ngIf="biranje">
+        <h3>Semestar {{ semestar1 }}</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Naziv predmeta</th>
+              <th>ESPB</th>
+              <th>Izaberi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let predmet of predmeti">
+              <tr *ngIf="predmet.semestri.includes(semestar1) && predmet.obavezan">
+                <td>{{ predmet.naziv }}</td>
+                <td>{{ predmet.espb }}</td>
+                <td>
+                  <input type="checkbox" #checkbox [value]="predmet.sifra" />
+                </td>
+              </tr>
+            </ng-container>
+            <tr>
+              <td colspan="3">
+                <hr style="border-top: 3px solid #000;">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="text-align: center;">Izaberite 2 od sledeća 4 predmeta</td>
+            </tr>
+            <ng-container *ngFor="let predmet of predmeti">
+              <tr *ngIf="predmet.semestri.includes(semestar1) && !predmet.obavezan">
+                <td>{{ predmet.naziv }}</td>
+                <td>{{ predmet.espb }}</td>
+                <td>
+                  <input type="checkbox" #checkbox [value]="predmet.sifra" />
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+
+        <h3>Semestar {{ semestar2 }}</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Naziv predmeta</th>
+              <th>ESPB</th>
+              <th>Izaberi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let predmet of predmeti">
+              <tr *ngIf="predmet.semestri.includes(semestar2) && predmet.obavezan">
+                <td>{{ predmet.naziv }}</td>
+                <td>{{ predmet.espb }}</td>
+                <td>
+                  <input type="checkbox" #checkbox [value]="predmet.sifra" />
+                </td>
+              </tr>
+            </ng-container>
+            <tr>
+              <td colspan="3">
+                <hr style="border-top: 3px solid #000;">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="text-align: center;">Izaberite 1 od sledeća 4 predmeta</td>
+            </tr>
+            <ng-container *ngFor="let predmet of predmeti">
+              <tr *ngIf="predmet.semestri.includes(semestar2) && !predmet.obavezan">
+                <td>{{ predmet.naziv }}</td>
+                <td>{{ predmet.espb }}</td>
+                <td>
+                  <input type="checkbox" #checkbox [value]="predmet.sifra" />
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <button (click)="prikupiOdabranePredmete()">Izaberi</button>
+        </div>
+
+        <div *ngIf="uspeh" class="alert alert-success">
+          {{ uspeh }}
+        </div>
+        <div *ngIf="poruka" class="alert alert-danger">
+          {{ poruka }}
+        </div>
+      </div>
+
+      <div *ngIf="!biranje">
+        <div class="alert alert-danger">
+          Biranje predmeta nije u toku.
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+  </footer>
+
+</body>
+
+</html>

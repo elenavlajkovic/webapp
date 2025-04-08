@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija</title>
+</head>
+<body>
+
+    <header>
+        <div class="nav-links">
+            <a [routerLink]="['/adminMain']">Početna</a>
+            <a [routerLink]="['/registrationProfessor']">Registracija profesora</a>
+            <a [routerLink]="['/registration']">Registracija studenta</a>
+            <a [routerLink]="['/adminSubjects']">Dodavanje predmeta</a>
+            <a [routerLink]="['/adminExams']">Definisanje ispitnih rokova</a>
+            <a [routerLink]="['/adminProfView']">Pregled profesora</a>
+            <a [routerLink]="['/adminStudView']">Pregled studenata</a>
+            <a [routerLink]="['/adminTestView']">Pregled zakazanih ispita</a>
+            <a [routerLink]="['/adminPayments']">Školarine i uplate</a>
+            <a class="logout-link" (click)="logout()">Odjavi se</a>
+        </div>
+    </header>
+
+    <main>
+      <h2>Biranje predmeta</h2>
+      <div style="text-align: center;">
+        <button style="font-weight: bold;" (click)="promeniBiranjePredmeta()">
+          {{ biranje ? 'Onemogući biranje predmeta' : 'Omogući biranje predmeta' }}
+        </button>
+      </div>
+      
+      <div *ngIf="poruka" class="alert alert-success">
+        {{ poruka }}
+      </div>
+      <hr>
+      <h2>Upis sledeće školske godine</h2>
+      <div style="text-align: center;">
+        <button style="font-weight: bold;" (click)="upisSledeceGodine()">
+          Omogući upis sledeće godine
+        </button>
+      </div>
+      
+      <div *ngIf="poruka2" class="alert alert-success">
+        {{ poruka2 }}
+      </div>
+      <hr>
+      <h2>Predmeti</h2>
+        <table border="1" style="width:100%; border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th>Semestar</th>
+                <th>Predmet</th>
+                <th>Profesori</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let semestar of grupisaniSemestri">
+                <tr>
+                  <td [attr.rowspan]="semestar.predmeti.length">{{ semestar.semestar }}</td>
+                  <td>{{ semestar.predmeti[0].naziv }}</td>
+                  <td>
+                    <span *ngFor="let profesor of semestar.predmeti[0].profesori; let i = index">
+                      {{ profesor.ime }} {{ profesor.prezime }}<span *ngIf="i < semestar.predmeti[0].profesori.length - 1">, </span>
+                    </span>
+                  </td>
+                </tr>
+                <tr *ngFor="let predmet of semestar.predmeti.slice(1)">
+                  <td>{{ predmet.naziv }}</td>
+                  <td>
+                    <span *ngFor="let profesor of predmet.profesori; let i = index">
+                      {{ profesor.ime }} {{ profesor.prezime }}<span *ngIf="i < predmet.profesori.length - 1">, </span>
+                    </span>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+          
+    </main>
+
+    <footer>
+        © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+    </footer>
+
+</body>
+</html>
+

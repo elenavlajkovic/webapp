@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija</title>
+</head>
+<body>
+
+    <header>
+        <div class="nav-links">
+            <a [routerLink]="['/adminMain']">Početna</a>
+            <a [routerLink]="['/registrationProfessor']">Registracija profesora</a>
+            <a [routerLink]="['/registration']">Registracija studenta</a>
+            <a [routerLink]="['/adminSubjects']">Dodavanje predmeta</a>
+            <a [routerLink]="['/adminExams']">Definisanje ispitnih rokova</a>
+            <a [routerLink]="['/adminProfView']">Pregled profesora</a>
+            <a [routerLink]="['/adminStudView']">Pregled studenata</a>
+            <a [routerLink]="['/adminTestView']">Pregled zakazanih ispita</a>
+            <a [routerLink]="['/adminPayments']">Školarine i uplate</a>
+            <a class="logout-link" (click)="logout()">Odjavi se</a>
+        </div>
+    </header>
+
+    <main>
+      <div class="reg">
+        <h2 class="form-title">Dodaj novi predmet</h2>
+            
+        <label for="naziv-predmeta">Naziv predmeta:</label>
+        <input type="text" id="naziv-predmeta" name="naziv-predmeta" placeholder="Unesite naziv predmeta" [(ngModel)]="predmet">
+      
+        <label for="sifra-predmeta">Sifra predmeta:</label>
+        <input type="text" id="sifra-predmeta" name="sifra-predmeta" placeholder="Unesite sifru predmeta" [(ngModel)]="sifra">
+        
+        <label>Izaberite profesore:</label>
+        
+        <div class="lista-profesora">
+          <label *ngFor="let profesor of profesori">
+            <input type="checkbox" name="profesor" [attr.data-ime]="profesor.ime" [attr.data-prezime]="profesor.prezime" [value]="profesor.kor_ime">
+            {{ profesor.ime }} {{ profesor.prezime }}
+          </label>
+        </div>
+      
+        <label>Izaberite semestre u kojima se sluša ovaj predmet:</label>
+        
+        <div class="lista-semestri">
+          <input type="checkbox" [value]="1" name="semestar"> 1
+          <input type="checkbox" [value]="2" name="semestar"> 2
+          <input type="checkbox" [value]="3" name="semestar"> 3
+          <input type="checkbox" [value]="4" name="semestar"> 4
+          <input type="checkbox" [value]="5" name="semestar"> 5
+          <input type="checkbox" [value]="6" name="semestar"> 6
+          <input type="checkbox" [value]="7" name="semestar"> 7
+          <input type="checkbox" [value]="8" name="semestar"> 8
+        </div>
+      
+        <label>Izaberite ESPB poene:</label>
+        <input type="number" id="myNumberInput" name="quantity" min="3" max="10" step="1" [(ngModel)]="espb">
+      
+        <input type="checkbox" [(ngModel)]="isObavezan" name="obavezan"> Predmet je obavezan
+
+        <button type="submit" (click)="dodajPredmet()">Dodaj predmet</button>
+        <div *ngIf="poruka" class="alert alert-danger" style="display: block; text-align: center; color: red;">
+          {{ poruka }}
+        </div>
+  
+        <div *ngIf="uspeh" class="alert alert-success"style="display: block; text-align: center">
+          {{ uspeh }}
+        </div>
+      </div>
+    </main>
+
+    <footer>
+        © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+    </footer>
+
+</body>
+</html>
+
+

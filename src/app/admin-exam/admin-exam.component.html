@@ -1,0 +1,97 @@
+<p>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="nav-links">
+        <a [routerLink]="['/adminMain']">Početna</a>
+        <a [routerLink]="['/registrationProfessor']">Registracija profesora</a>
+        <a [routerLink]="['/registration']">Registracija studenta</a>
+        <a [routerLink]="['/adminSubjects']">Dodavanje predmeta</a>
+        <a [routerLink]="['/adminExams']">Definisanje ispitnih rokova</a>
+        <a [routerLink]="['/adminProfView']">Pregled profesora</a>
+        <a [routerLink]="['/adminStudView']">Pregled studenata</a>
+        <a [routerLink]="['/adminTestView']">Pregled zakazanih ispita</a>
+        <a [routerLink]="['/adminPayments']">Školarine i uplate</a>
+        <a class="logout-link" (click)="logout()">Odjavi se</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="reg">
+        <form>
+          <div>
+            <label for="name">Naziv:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="rok.naziv" required>
+          </div>
+          <div>
+            <label for="start">Početak:</label>
+            <input type="date" id="start" name="start" min="{{ today }}" [(ngModel)]="rok.pocetak" required>
+          </div>
+
+          <div>
+            <label for="end">Kraj:</label>
+            <input type="date" id="end" name="end" min="{{ today }}" [(ngModel)]="rok.kraj" required>
+          </div>
+
+          <button (click)="dodajIspitniRok()">Potvrdi</button>
+        </form>
+
+        <div *ngIf="poruka" class="alert alert-danger" style="display: block; text-align: center; color: red;">
+          {{ poruka }}
+        </div>
+
+        <div *ngIf="uspesno" class="alert alert-success" style="display: block; text-align: center">
+          {{ uspesno }}
+        </div>
+
+        <h3>Definisani rokovi</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Naziv</th>
+              <th>Početak</th>
+              <th>Kraj</th>
+              <th>Prijava ispita za rok</th>
+              <th>Sale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rok of rokovi">
+              <td>{{ rok.naziv }}</td>
+              <td>{{ rok.pocetak | date: 'dd.MM.yyyy.' }}</td>
+              <td>{{ rok.kraj | date: 'dd.MM.yyyy.' }}</td>
+              <td>
+                <button style="font-weight: bold;" (click)="omoguciPrijavuIspitaZaRok(rok)">
+                  {{ rok.prijavaIspita ? 'Zabrani' : 'Dozvoli' }}
+                </button>
+              </td>
+              <td>
+                <button style="font-weight: bold;" (click)="dodeliSale(rok)">Dodeli sale</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="poruka2" class="alert alert-success" style="display: block; text-align: center">
+          {{ poruka2 }}
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer>
+      © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+    </footer>
+
+  </body>
+
+  </html>

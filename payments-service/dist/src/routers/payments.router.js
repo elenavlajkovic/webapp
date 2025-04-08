@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const payments_controller_1 = require("../controllers/payments.controller");
+const router = (0, express_1.Router)();
+router.route("/dohvCene/:kor_ime").get((req, res) => new payments_controller_1.PaymentsController().dohvCene(req, res));
+router.route("/cena").post((req, res) => new payments_controller_1.PaymentsController().postaviCene(req, res));
+router.route("/dohvRokove").get((req, res) => new payments_controller_1.PaymentsController().dohvRokove(req, res));
+router.route("/podaciOUplati").post((req, res) => new payments_controller_1.PaymentsController().podaciOUplati(req, res));
+exports.default = router;

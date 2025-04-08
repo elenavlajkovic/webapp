@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predmeti po semestrima</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-content">
+      <img src="/assets/images.png" alt="ETF Logo" class="logo">
+      <div class="user-info">
+        <div class="user-details">
+          <img src="/assets/user.png" alt="User Icon" class="user-icon">
+          <span>{{ kor_ime }}</span>
+        </div>
+        <a class="logout-link" (click)="logout()">Odjavi se</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav class="sidebar">
+      <a [routerLink]="['/student']" routerLinkActive="active-link">Početna</a>
+      <a [routerLink]="['/studentChooseSubjects']" routerLinkActive="active-link">Biranje predmeta</a>
+      <a [routerLink]="['/studentExamReg']" routerLinkActive="active-link">Prijava ispita</a>
+      <a [routerLink]="['/studentGrades']" routerLinkActive="active-link">Ispiti</a>
+      <a [routerLink]="['/studentTimeTable']" routerLinkActive="active-link">Raspored časova</a>
+      <a [routerLink]="['/studentPayments']" routerLinkActive="active-link">Školarine i uplate</a>
+      <a [routerLink]="['/studentPassword']" routerLinkActive="active-link">Promena lozinke</a>
+    </nav>
+
+    <main>
+      <div *ngIf="ocene.length > 0">
+        <table>
+          <thead>
+            <tr>
+              <th>Predmet</th>
+              <th>Ocena</th>
+              <th>ESPB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ocena of ocene">
+              <td>{{ ocena.predmet }}</td>
+              <td>{{ ocena.ocena }}</td>
+              <td>{{ ocena.espb }}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: right;"><strong>Ukupno ESPB:</strong></td>
+              <td><strong>{{ ukupnoESPB }}</strong></td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: right;"><strong>Prosečna ocena:</strong></td>
+              <td><strong>{{ prosecnaOcena | number:'1.2-2' }}</strong></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predmeti po semestrima</title>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <img src="/assets/images.png" alt="ETF Logo" class="logo">
+            <div class="user-info">
+                <div class="user-details">
+                    <img src="/assets/user.png" alt="User Icon" class="user-icon"> 
+                    <span>{{ kor_ime }}</span>
+                </div>
+                <a class="logout-link" (click)="logout()">Odjavi se</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="sidebar">
+            <a [routerLink]="['/student']" routerLinkActive="active-link">Početna</a>
+            <a [routerLink]="['/studentChooseSubjects']" routerLinkActive="active-link">Biranje predmeta</a>
+            <a [routerLink]="['/studentExamReg']" routerLinkActive="active-link">Prijava ispita</a>
+            <a [routerLink]="['/studentGrades']" routerLinkActive="active-link">Ispiti</a>
+            <a [routerLink]="['/studentTimeTable']" routerLinkActive="active-link">Raspored časova</a>
+            <a [routerLink]="['/studentPayments']" routerLinkActive="active-link">Školarine i uplate</a>
+            <a [routerLink]="['/studentPassword']" routerLinkActive="active-link">Promena lozinke</a>
+        </nav>
+
+        <main>
+            <div class="container">
+                <!-- Ponedeljak -->
+                <div class="day-container">
+                  <div class="row">
+                    <ng-container *ngFor="let cas of mojiCasovi">
+                      <ng-container *ngIf="cas.dan === 'Ponedeljak'">
+                        <div class="col-md-4">
+                          <div class="card custom-card">
+                            <div class="card-body">
+                              <h5 class="card-title">{{ cas.predmet }}</h5>
+                              <p class="card-text">Vreme: {{ cas.vreme_pocetka }} - {{ cas.vreme_kraja }}</p>
+                              <p class="card-text">Sala: {{ cas.sala }}</p>
+                              <p class="card-text">Tip časa: {{ cas.tip }}</p>
+                              <p class="card-text" style="font-weight: bold;">Dan: {{ cas.dan }}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                </div>
+              
+                <!-- Utorak -->
+                <div class="day-container">
+                  <div class="row">
+                    <ng-container *ngFor="let cas of mojiCasovi">
+                      <ng-container *ngIf="cas.dan === 'Utorak'">
+                        <div class="col-md-4">
+                          <div class="card custom-card">
+                            <div class="card-body">
+                              <h5 class="card-title">{{ cas.predmet }}</h5>
+                              <p class="card-text">Vreme: {{ cas.vreme_pocetka }} - {{ cas.vreme_kraja }}</p>
+                              <p class="card-text">Sala: {{ cas.sala }}</p>
+                              <p class="card-text">Tip časa: {{ cas.tip }}</p>
+                              <p class="card-text" style="font-weight: bold;">Dan: {{ cas.dan }}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="day-container">
+                    <div class="row">
+                      <ng-container *ngFor="let cas of mojiCasovi">
+                        <ng-container *ngIf="cas.dan === 'Sreda'">
+                          <div class="col-md-4">
+                            <div class="card custom-card">
+                              <div class="card-body">
+                                <h5 class="card-title">{{ cas.predmet }}</h5>
+                                <p class="card-text">Vreme: {{ cas.vreme_pocetka }} - {{ cas.vreme_kraja }}</p>
+                                <p class="card-text">Sala: {{ cas.sala }}</p>
+                                <p class="card-text">Tip časa: {{ cas.tip }}</p>
+                                <p class="card-text" style="font-weight: bold;">Dan: {{ cas.dan }}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </ng-container>
+                    </div>
+                  </div>
+              
+                <div class="day-container">
+                    <div class="row">
+                      <ng-container *ngFor="let cas of mojiCasovi">
+                        <ng-container *ngIf="cas.dan === 'Četvrtak'">
+                          <div class="col-md-4">
+                            <div class="card custom-card">
+                              <div class="card-body">
+                                <h5 class="card-title">{{ cas.predmet }}</h5>
+                                <p class="card-text">Vreme: {{ cas.vreme_pocetka }} - {{ cas.vreme_kraja }}</p>
+                                <p class="card-text">Sala: {{ cas.sala }}</p>
+                                <p class="card-text">Tip časa: {{ cas.tip }}</p>
+                                <p class="card-text" style="font-weight: bold;">Dan: {{ cas.dan }}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </ng-container>
+                    </div>
+                  </div>
+
+                  <div class="day-container">
+                    <div class="row">
+                      <ng-container *ngFor="let cas of mojiCasovi">
+                        <ng-container *ngIf="cas.dan === 'Petak'">
+                          <div class="col-md-4">
+                            <div class="card custom-card">
+                              <div class="card-body">
+                                <h5 class="card-title">{{ cas.predmet }}</h5>
+                                <p class="card-text">Vreme: {{ cas.vreme_pocetka }} - {{ cas.vreme_kraja }}</p>
+                                <p class="card-text">Sala: {{ cas.sala }}</p>
+                                <p class="card-text">Tip časa: {{ cas.tip }}</p>
+                                <p class="card-text" style="font-weight: bold;">Dan: {{ cas.dan }}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </ng-container>
+                    </div>
+                  </div>
+
+              </div>
+              
+        </main>
+    </div>
+
+    <footer>
+        © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+    </footer>
+
+</body>
+</html>
+

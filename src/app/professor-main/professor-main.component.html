@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predmeti po semestrima</title>
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <img src="/assets/images.png" alt="ETF Logo" class="logo">
+      <div class="user-info">
+        <div class="user-details">
+          <img src="/assets/user.png" alt="User Icon" class="user-icon"> 
+          <span>{{ kor_ime }}</span>
+        </div>
+        <a class="logout-link" (click)="logout()">Odjavi se</a>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <nav class="sidebar">
+      <a [routerLink]="['/professor']" routerLinkActive="active-link">Početna</a>
+      <a [routerLink]="['/professorExams']" routerLinkActive="active-link">Zakazivanje ispita</a>
+      <a [routerLink]="['/professorInfo']" routerLinkActive="active-link">Obaveštenja</a>
+      <a [routerLink]="['/professorGrades']" routerLinkActive="active-link">Upisivanje ocena</a>
+      <a [routerLink]="['/professorTimeTable']" routerLinkActive="active-link">Raspored časova</a>
+      <a [routerLink]="['/professorPassword']" routerLinkActive="active-link">Promena lozinke</a>
+    </nav>
+
+    <main>
+      <h3>Svi predmeti</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Semestar</th>
+            <th>Predmet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let semestar of grupisaniSemestri">
+            <tr>
+              <td [attr.rowspan]="semestar.predmeti.length">{{ semestar.semestar }}</td>
+              <td>{{ semestar.predmeti[0].naziv }}</td>
+            </tr>
+            <tr *ngFor="let predmet of semestar.predmeti.slice(1)">
+              <td>{{ predmet.naziv }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <footer>
+    © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+  </footer>
+
+</body>
+
+</html>

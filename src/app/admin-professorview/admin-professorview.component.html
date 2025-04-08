@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija</title>
+</head>
+<body>
+
+    <header>
+        <div class="nav-links">
+            <a [routerLink]="['/adminMain']">Početna</a>
+            <a [routerLink]="['/registrationProfessor']">Registracija profesora</a>
+            <a [routerLink]="['/registration']">Registracija studenta</a>
+            <a [routerLink]="['/adminSubjects']">Dodavanje predmeta</a>
+            <a [routerLink]="['/adminExams']">Definisanje ispitnih rokova</a>
+            <a [routerLink]="['/adminProfView']">Pregled profesora</a>
+            <a [routerLink]="['/adminStudView']">Pregled studenata</a>
+            <a [routerLink]="['/adminTestView']">Pregled zakazanih ispita</a>
+            <a [routerLink]="['/adminPayments']">Školarine i uplate</a>
+            <a class="logout-link" (click)="logout()">Odjavi se</a>
+        </div>
+    </header>
+
+    <main>
+        <table>
+            <thead>
+              <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Korisničko ime</th>
+                <th>Email</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let profesor of profesori">
+                <td>{{ profesor.ime }}</td>
+                <td>{{ profesor.prezime }}</td>
+                <td>{{ profesor.kor_ime }}</td>
+                <td>{{ profesor.mejl }}</td>
+                <td>
+                  <button (click) = "obrisiProfesora(profesor.kor_ime)">Obriši</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+    </main>
+
+    <footer>
+        © 2024 - Sva prava zadržana, Elena Vlajković 2020/0695
+    </footer>
+
+</body>
+</html>
+
+
+
